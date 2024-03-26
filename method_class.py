@@ -15,14 +15,11 @@ class MethodClass:
     @staticmethod
     def generate_story_plot(prompt):
         openai.api_key = MethodClass.get_openai_key()
-        try:
-            response = openai.Completion.create(
-                engine=MethodClass.MODEL_NAME,
-                prompt=prompt,
-                max_tokens=600,
-                temperature=0.7,
-            )
-            story_plot = response.choices[0].text.strip()
-            return story_plot
-        except openai.OpenAIError as error:
-            return "An error occurred while generating the story plot."
+        response = openai.Completion.create(
+            engine=MethodClass.MODEL_NAME,
+            prompt=prompt,
+            max_tokens=600,
+            temperature=0.7,
+        )
+        story_plot = response.choices[0].text.strip()
+        return story_plot
