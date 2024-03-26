@@ -1,4 +1,5 @@
 import os
+from urllib import response
 import openai
 from dotenv import load_dotenv
 
@@ -18,13 +19,14 @@ class MethodClass:
     def generate_story_plot(prompt):
         openai.api_key = MethodClass.get_openai_key()
         try:
-            response = openai.Engine("gpt-3.5-turbo-instruct").create_completion(  # Use updated API
-                prompt=prompt,
-                max_tokens=600,
-                n=1,
-                stop=None,
-                temperature=0.7
-            )
+            openai.Completion.create(
+            engine="gpt-3.5-turbo-instruct",
+            prompt=prompt,
+            max_tokens=600,  # Adjusted for the new API
+            n=1,
+            stop=None,
+            temperature=0.7
+        )
             print(f"Generated Prompt: {prompt}")  # Print prompt for debugging
             print(f"OpenAI Response: {response}")  # Print API response for debugging
             story_plot = response.choices[0].text.strip()
