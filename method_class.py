@@ -26,10 +26,4 @@ class MethodClass:
             story_plot = response.choices[0].text.strip()
             return story_plot
         except openai.OpenAIError as error:
-        # Log the error for debugging purposes
-            print(f"OpenAI API Error: {error}")
             return "An error occurred while generating the story plot."
-        except Exception as e:
-        # Log any other unexpected exceptions
-            print(f"Unexpected error: {e}")
-            return "An unexpected error occurred."
