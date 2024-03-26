@@ -9,8 +9,7 @@ class MethodClass:
     # Load OpenAI API key from environment variable
     @staticmethod
     def get_openai_key():
-        load_dotenv()  # Load environment variables from .env file
-        return os.getenv("OPENAI_API_KEY")
+        return os.environ.get("OPENAI_API_KEY")
 
     # Generate story plot using OpenAI API
     @staticmethod
